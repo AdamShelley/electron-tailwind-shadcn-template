@@ -1,65 +1,28 @@
-import ElectronVersions from "./components/ElectronVersions";
-import ReactiveCounter from "./components/ReactiveCounter";
-import ReactiveHash from "./components/ReactiveHash";
-import ViteLogo from "../assets/logo.svg";
-import ReactLogo from "../assets/react.svg";
-
-const APP_VERSION = import.meta.env.VITE_APP_VERSION;
+import { toast } from "sonner";
+import { Button } from "./components/ui/button";
+import { Toaster } from "./components/ui/sonner";
 
 const App = () => {
+  const showSonner = () => {
+    toast.success("This is a message from Shadcn sonner!");
+  };
+
   return (
-    <>
-      <img
-        alt="Vite logo"
-        src={ViteLogo}
-        width="150"
-      />
+    <main className="w-screen h-screen flex justify-center align-center">
+      <div className="flex flex-col justify-center align-center">
+        <h1 className="text-green-900 text-2xl">This is now tailwind text</h1>
 
-      <img
-        alt="React logo"
-        src={ReactLogo}
-        width="150"
-      />
-
-      <p>
-        {/* Example how to inject current app version to UI */}
-        App version: {APP_VERSION}
-      </p>
-
-      <p>
-        For a guide and recipes on how to configure / customize this project,
-        <br />
-        check out the
-        <a
-          href="https://github.com/cawa-93/vite-electron-builder"
-          target="_blank"
-          rel="noreferrer"
+        <p className="text-red-900 text-lg">This is a paragraph with tailwind text</p>
+        <Button
+          className="mt-10"
+          variant="destructive"
+          onClick={showSonner}
         >
-          vite-electron-builder documentation
-        </a>
-        .
-      </p>
-
-      <fieldset>
-        <legend>Test React Reactivity</legend>
-        <ReactiveCounter />
-      </fieldset>
-
-      <fieldset>
-        <legend>Test Node.js API</legend>
-        <ReactiveHash />
-      </fieldset>
-
-      <fieldset>
-        <legend>Environment</legend>
-        <ElectronVersions />
-      </fieldset>
-
-      <p>
-        Edit
-        <code>packages/renderer/src/App.tsx</code> to test hot module replacement.
-      </p>
-    </>
+          Shadcn buttons
+        </Button>
+      </div>
+      <Toaster />
+    </main>
   );
 };
 
